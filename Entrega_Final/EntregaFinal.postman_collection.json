@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "03942e1c-c842-4d58-b36a-38cc1a60890b",
+		"name": "Entrega3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41729623"
+	},
+	"item": [
+		{
+			"name": "Crear Producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"title\": \"Bife de Chorizo\",\r\n        \"description\": \"Corte premium de carne vacuna, ideal para la parrilla.\",\r\n        \"code\": \"BIFE001\",\r\n        \"price\": 2500,\r\n        \"stock\": 20,\r\n        \"category\": \"Vacuno\"\r\n    },\r\n    {\r\n        \"title\": \"Asado de Tira\",\r\n        \"description\": \"Clásico corte argentino con hueso, perfecto para el asador.\",\r\n        \"code\": \"ASADO002\",\r\n        \"price\": 1800,\r\n        \"stock\": 30,\r\n        \"category\": \"Vacuno\"\r\n    },\r\n    {\r\n        \"title\": \"Vacío\",\r\n        \"description\": \"Corte jugoso y tierno, excelente para asar o al horno.\",\r\n        \"code\": \"VACIO003\",\r\n        \"price\": 2200,\r\n        \"stock\": 25,\r\n        \"category\": \"Vacuno\"\r\n    },\r\n    {\r\n        \"title\": \"Pechuga de Pollo\",\r\n        \"description\": \"Filete de pechuga sin hueso, ideal para preparar a la plancha o al horno.\",\r\n        \"code\": \"POLLO004\",\r\n        \"price\": 1200,\r\n        \"stock\": 50,\r\n        \"category\": \"Pollo\"\r\n    },\r\n    {\r\n        \"title\": \"Milanesa de Ternera\",\r\n        \"description\": \"Rebanadas finas de carne listas para empanar y freír.\",\r\n        \"code\": \"MILANESA005\",\r\n        \"price\": 1500,\r\n        \"stock\": 40,\r\n        \"category\": \"Vacuno\"\r\n    },\r\n    {\r\n        \"title\": \"Chorizo Criollo\",\r\n        \"description\": \"Chorizo artesanal con un sabor intenso, ideal para la parrilla.\",\r\n        \"code\": \"CHORIZO006\",\r\n        \"price\": 900,\r\n        \"stock\": 35,\r\n        \"category\": \"Embutidos\"\r\n    },\r\n    {\r\n        \"title\": \"Morcilla\",\r\n        \"description\": \"Morcilla tradicional, perfecta para acompañar el asado.\",\r\n        \"code\": \"MORCILLA007\",\r\n        \"price\": 800,\r\n        \"stock\": 20,\r\n        \"category\": \"Embutidos\"\r\n    },\r\n    {\r\n        \"title\": \"Bondiola de Cerdo\",\r\n        \"description\": \"Corte tierno y sabroso, ideal para horno o parrilla.\",\r\n        \"code\": \"BONDIOLA008\",\r\n        \"price\": 2000,\r\n        \"stock\": 15,\r\n        \"category\": \"Cerdo\"\r\n    },\r\n    {\r\n        \"title\": \"Pata y Muslo de Pollo\",\r\n        \"description\": \"Muslos y patas de pollo frescos, ideales para guisos o parrilla.\",\r\n        \"code\": \"POLLO009\",\r\n        \"price\": 1100,\r\n        \"stock\": 45,\r\n        \"category\": \"Pollo\"\r\n    },\r\n    {\r\n        \"title\": \"Matambre de Cerdo\",\r\n        \"description\": \"Corte delgado y tierno, perfecto para hacer a la parrilla.\",\r\n        \"code\": \"MATAMBRE010\",\r\n        \"price\": 1700,\r\n        \"stock\": 25,\r\n        \"category\": \"Cerdo\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Carrito",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar producto a un carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/67e1ef641df9e4fc9de7ca11/products/67e1f09741ebfba4c7cc1a10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"67e1ef641df9e4fc9de7ca11",
+						"products",
+						"67e1f09741ebfba4c7cc1a10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Productos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Carrito",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/67e1ea70db20d5bc1f31cf62",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"67e1ea70db20d5bc1f31cf62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vaciar Carrito",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Bife de Chorizo\",\r\n    \"description\": \"Corte premium\",\r\n    \"code\": \"BIFE123\",\r\n    \"price\": 4500,\r\n    \"stock\": 20,\r\n    \"category\": \"Carnes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/carts/67e1ecd5a9d43147f98dc959",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"67e1ecd5a9d43147f98dc959"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar producto de un carrito",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/67e1ef641df9e4fc9de7ca11/products/67e1f09741ebfba4c7cc1a10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"67e1ef641df9e4fc9de7ca11",
+						"products",
+						"67e1f09741ebfba4c7cc1a10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poblar carrito",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        { \"product\": \"67e1f09741ebfba4c7cc1a10\", \"quantity\": 2 }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/carts/67e1ef641df9e4fc9de7ca11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"67e1ef641df9e4fc9de7ca11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

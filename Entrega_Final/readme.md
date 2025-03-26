@@ -1,4 +1,5 @@
 Backend de Tienda - Proyecto Final 
+
 Este es el backend de una tienda en línea desarrollado con Node.js, Express, MongoDB y Mongoose. Incluye la gestión de productos y carritos de compras, con funcionalidades avanzadas como paginación, filtros, ordenamiento y WebSockets para actualización en tiempo real.
 
 Instalar dependencias
@@ -10,6 +11,8 @@ Configurar MongoDB
 Asegúrate de tener MongoDB ejecutándose en localhost:27017.
 
 El servidor correrá en http://localhost:8080 🚀
+
+Postman Collection dentro del repositorio
 
 📜 Endpoints principales
 

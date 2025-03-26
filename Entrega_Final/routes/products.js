@@ -50,26 +50,36 @@ router.get("/:pid", async (req, res) => {
     }
 });
 
-// POST /api/products - Agregar un nuevo producto
+// POST /api/products - Agregar uno o varios productos
 router.post("/", async (req, res) => {
     try {
-        const { title, description, code, price, stock, category } = req.body;
+        let products = req.body; // Puede ser un solo objeto o un array
 
-        if (!title || !description || !code || !price || !stock || !category) {
-            return res.status(400).json({ error: "Faltan campos obligatorios" });
+        // Si no es un array, lo convertimos en uno
+        if (!Array.isArray(products)) {
+            products = [products];
         }
 
-        //Verificar si el código ya existe (para evitar duplicados)
-        const existingProduct = await Product.findOne({ code });
-        if (existingProduct) {
-            return res.status(400).json({ error: "Código de producto ya existente" });
+        // Validar que todos los productos tengan los campos obligatorios
+        for (let product of products) {
+            const { title, description, code, price, stock, category } = product;
+            if (!title || !description || !code || !price || !stock || !category) {
+                return res.status(400).json({ error: "Faltan campos obligatorios en uno o más productos" });
+            }
+
+            // Verificar si el código ya existe para evitar duplicados
+            const existingProduct = await Product.findOne({ code });
+            if (existingProduct) {
+                return res.status(400).json({ error: `El código ${code} ya existe` });
+            }
         }
 
-        const newProduct = new Product({ title, description, code, price, stock, category });
-        await newProduct.save();
-        res.status(201).json(newProduct);
+        // Guardar todos los productos en la base de datos
+        const createdProducts = await Product.insertMany(products);
+        res.status(201).json({ message: "Productos agregados exitosamente", products: createdProducts });
+
     } catch (error) {
-        res.status(500).json({ error: "Error al agregar el producto" });
+        res.status(500).json({ error: "Error al agregar productos" });
     }
 });
 
