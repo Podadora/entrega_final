@@ -1,0 +1,55 @@
+<h1>Lista de Productos</h1>
+
+<!-- Mostrar productos con paginación -->
+<ul>
+    {{#each products}}
+        <li>
+            <strong>{{this.title}}</strong> - ${{this.price}}
+            <br>
+            <a href="/products/{{this._id}}">🔍 Ver Detalles</a>
+            <button onclick="addToCart('{{this._id}}')">🛒 Agregar al Carrito</button>
+        </li>
+    {{/each}}
+</ul>
+
+<!-- Controles de paginación -->
+<div>
+    {{#if hasPrevPage}}
+        <a href="{{prevLink}}">⬅️ Anterior</a>
+    {{/if}}
+    <span>Página {{page}} de {{totalPages}}</span>
+    {{#if hasNextPage}}
+        <a href="{{nextLink}}">➡️ Siguiente</a>
+    {{/if}}
+</div>
+
+<!-- Script para agregar productos al carrito -->
+<script>
+    function addToCart(productId) {
+        let cartId = localStorage.getItem("cartId");  // Obtener el carrito del almacenamiento local
+
+        if (!cartId) {
+            alert("No hay un carrito disponible. Se creará uno nuevo.");
+            fetch("/api/carts", { method: "POST" }) // Crear un nuevo carrito si no existe
+                .then(response => response.json())
+                .then(cart => {
+                    cartId = cart._id;
+                    localStorage.setItem("cartId", cartId);  // Guardar el nuevo carrito
+                    sendProductToCart(cartId, productId);
+                })
+                .catch(error => console.error("Error al crear el carrito:", error));
+        } else {
+            sendProductToCart(cartId, productId);
+        }
+    }
+
+    function sendProductToCart(cartId, productId) {
+        fetch(`/api/carts/${cartId}/products/${productId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => alert("Producto agregado al carrito"))
+        .catch(error => console.error("Error:", error));
+    }
+</script>

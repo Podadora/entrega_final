@@ -1,5 +1,4 @@
 Backend de Tienda - Proyecto Final 
-
 Este es el backend de una tienda en línea desarrollado con Node.js, Express, MongoDB y Mongoose. Incluye la gestión de productos y carritos de compras, con funcionalidades avanzadas como paginación, filtros, ordenamiento y WebSockets para actualización en tiempo real.
 
 Instalar dependencias
@@ -8,7 +7,7 @@ npm install
 
 Configurar MongoDB
 
-Tener MongoDB ejecutándose en localhost:27017.
+Asegúrate de tener MongoDB ejecutándose en localhost:27017.
 
 El servidor correrá en http://localhost:8080 🚀
 
@@ -20,15 +19,16 @@ El servidor correrá en http://localhost:8080 🚀
 📌 GET /api/products/:pid → Obtiene un producto por ID
 📌 PUT /api/products/:pid → Actualiza un producto
 📌 DELETE /api/products/:pid → Elimina un producto
+
 📌 Query params soportados:
 
-    ?limit=10 → Número de productos por página (default: 10)
+?limit=10 → Número de productos por página (default: 10)
 
-    ?page=2 → Página solicitada (default: 1)
+?page=2 → Página solicitada (default: 1)
 
-    ?query=categoria → Filtrar por categoría o disponibilidad
+?query=categoria → Filtrar por categoría o disponibilidad
 
-    ?sort=asc/desc → Ordenar por precio ascendente o descendente
+?sort=asc/desc → Ordenar por precio ascendente o descendente
 
 
 🔹 Carritos (/api/carts)
